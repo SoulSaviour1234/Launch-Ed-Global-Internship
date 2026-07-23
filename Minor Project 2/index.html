@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tandoor Grid | Indian Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle Checkbox Hack -->
+    <input type="checkbox" id="theme-toggle" class="theme-toggle__input">
+    
+    <div class="app-wrapper">
+        <header class="header">
+            <div class="container header__container">
+                <a href="#" class="logo">Tandoor Grid</a>
+                
+                <!-- Hamburger Menu Checkbox Hack -->
+                <input type="checkbox" id="menu-toggle" class="nav__toggle-input">
+                <label for="menu-toggle" class="nav__toggle-label">
+                    <span class="nav__toggle-icon"></span>
+                </label>
+
+                <nav class="nav">
+                    <ul class="nav__menu">
+                        <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="#menu" class="nav__link">Menu</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <label for="theme-toggle" class="theme-toggle__label">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </label>
+            </div>
+        </header>
+
+        <main class="main">
+            <section id="home" class="hero">
+                <div class="container hero__container">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Authentic Indian Flavors</h1>
+                        <p class="hero__text">Experience the rich heritage and vibrant spices of India right at your table.</p>
+                        <a href="#menu" class="btn btn--primary hero__btn">Explore Menu</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="menu" class="menu">
+                <div class="container menu__container">
+                    <h2 class="menu__title">Our Specialties</h2>
+                    <div class="menu__grid">
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--1"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Butter Chicken</h3>
+                                <p class="menu__card-desc">Tender chicken in a rich, creamy tomato sauce.</p>
+                                <span class="menu__card-price">₹350</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--2"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Paneer Tikka</h3>
+                                <p class="menu__card-desc">Grilled cottage cheese marinated in spices.</p>
+                                <span class="menu__card-price">₹280</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--3"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Garlic Naan</h3>
+                                <p class="menu__card-desc">Freshly baked flatbread topped with garlic.</p>
+                                <span class="menu__card-price">₹60</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--4"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Lamb Rogan Josh</h3>
+                                <p class="menu__card-desc">Slow-cooked lamb in aromatic Kashmiri spices.</p>
+                                <span class="menu__card-price">₹420</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--5"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Biryani</h3>
+                                <p class="menu__card-desc">Fragrant basmati rice mixed with spices and meat.</p>
+                                <span class="menu__card-price">₹320</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--6"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Palak Paneer</h3>
+                                <p class="menu__card-desc">Cottage cheese cubes in a thick spinach puree.</p>
+                                <span class="menu__card-price">₹250</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--7"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Dal Makhani</h3>
+                                <p class="menu__card-desc">Creamy black lentils simmered overnight.</p>
+                                <span class="menu__card-price">₹220</span>
+                            </div>
+                        </article>
+                        <article class="menu__card">
+                            <div class="menu__card-image menu__card-image--8"></div>
+                            <div class="menu__card-content">
+                                <h3 class="menu__card-title">Gulab Jamun</h3>
+                                <p class="menu__card-desc">Sweet milk solid dumplings in rose syrup.</p>
+                                <span class="menu__card-price">₹120</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <div class="container about__container">
+                    <div class="about__content">
+                        <h2 class="about__title">About Tandoor Grid</h2>
+                        <p class="about__text">Founded in 2010, Tandoor Grid is a culinary haven that celebrates the diverse and vibrant flavors of India. We believe in using traditional cooking methods, like our authentic clay tandoor oven, to craft dishes that are true to their roots.</p>
+                        <p class="about__text">Every spice is hand-ground, and every recipe carries a story passed down through generations. Join us to experience the genuine warmth of Indian hospitality.</p>
+                    </div>
+                    <div class="about__image-wrapper">
+                        <img src="images/tandoor_oven.png" alt="Authentic Clay Tandoor Oven" class="about__image">
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <div class="container contact__container">
+                    <h2 class="contact__title">Get In Touch</h2>
+                    <div class="contact__grid">
+                        <div class="contact__info">
+                            <h3 class="contact__subtitle">Visit Us</h3>
+                            <p class="contact__text">123 Spice Avenue, Flavor District<br>Food City, FC 90210</p>
+                            <h3 class="contact__subtitle">Hours</h3>
+                            <p class="contact__text">Mon - Sun: 11:00 AM - 10:00 PM</p>
+                            <h3 class="contact__subtitle">Contact</h3>
+                            <p class="contact__text">Phone: (555) 123-4567<br>Email: hello@tandoorgrid.com</p>
+                        </div>
+                        <form class="contact__form">
+                            <input type="text" class="contact__input" placeholder="Your Name" required>
+                            <input type="email" class="contact__input" placeholder="Your Email" required>
+                            <textarea class="contact__input contact__textarea" placeholder="Your Message" rows="4" required></textarea>
+                            <button type="submit" class="btn btn--primary contact__btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class="container footer__container">
+                <p class="footer__text">&copy; 2026 Tandoor Grid. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
