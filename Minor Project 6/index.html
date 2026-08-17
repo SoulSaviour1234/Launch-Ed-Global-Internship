@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Performance Optimization -->
+  <title>Srijit Paul | Full-Stack Developer & AI Innovator</title>
+  <meta name="description" content="Portfolio of Srijit Paul - Full-Stack Developer, 5th-semester CS student at Adamas University. Specializing in React, Next.js, FastAPI, Supabase, and Gemini AI.">
+  <meta name="keywords" content="Srijit Paul, Full Stack Developer, Adamas University, Dr. Brinjal, Sanchay, SCMS, React, Next.js, FastAPI, Supabase, Gemini AI, Web Development, Portfolio">
+  <meta name="author" content="Srijit Paul">
+  <meta name="theme-color" content="#0d0519">
+  
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Srijit Paul | Full-Stack Developer & AI Innovator">
+  <meta property="og:description" content="Explore AI-driven projects, full-stack systems, and hackathon-winning architectures built by Srijit Paul.">
+  <meta property="og:site_name" content="Srijit Paul Portfolio">
+  
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23ff007f'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='50' font-weight='800' fill='%23ffffff'>SP</text></svg>">
+</head>
+<body>
+  <!-- Ambient Background Glows -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+  <!-- Header & Navigation Bar -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo" aria-label="Srijit Paul Home">
+        <span class="logo-badge">SP</span>
+        <span class="logo-text">Srijit<span class="gradient-text">.dev</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#stack" class="nav-link">Tech Stack</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Group -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle Theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- CTA Hire Me -->
+        <a href="#contact" class="btn btn-sm btn-primary hide-mobile">Hire Me</a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Hero Content -->
+        <div class="hero-content">
+          <div class="hero-status-badge">
+            <span class="status-dot pulse" aria-hidden="true"></span>
+            <span>5th-Semester CS Student @ <strong>Adamas University</strong></span>
+          </div>
+
+          <h1 class="hero-headline">
+            Hi, I'm <span class="gradient-text animated-name">Srijit Paul</span><br>
+            <span class="headline-sub">Architecting Next-Gen <span class="typing-highlight">Full-Stack & AI</span> Solutions</span>
+          </h1>
+
+          <p class="hero-description">
+            Passionate software craftsman building scalable web systems, neural network ensembles, and intelligent enterprise architectures. Hackathon finalist with hands-on expertise across modern modern frontends, robust Python backends, and Gemini AI integration.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-lg btn-primary hero-btn">
+              <span>Explore Projects</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-lg btn-secondary hero-btn">
+              <span>Get In Touch</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 2L11 13"></path>
+                <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Quick Stats Counter Strip -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">4+</span>
+              <span class="stat-label">Core Flagships</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-number">₹30L</span>
+              <span class="stat-label">Hackathon Pool Competitor</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-number">99.8%</span>
+              <span class="stat-label">Code Precision & Uptime</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual / Code Window Showcase -->
+        <div class="hero-visual">
+          <div class="code-window card-glass">
+            <div class="window-header">
+              <div class="window-controls">
+                <span class="control-dot close"></span>
+                <span class="control-dot minimize"></span>
+                <span class="control-dot expand"></span>
+              </div>
+              <span class="window-title">srijit-developer-profile.ts</span>
+              <span class="window-badge">v2.5.0</span>
+            </div>
+            <div class="window-body">
+              <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span>: <span class="code-type">DeveloperProfile</span> = {
+  <span class="code-property">name</span>: <span class="code-string">"Srijit Paul"</span>,
+  <span class="code-property">role</span>: <span class="code-string">"Full-Stack Engineer & AI Specialist"</span>,
+  <span class="code-property">institution</span>: <span class="code-string">"Adamas University (Sem 5)"</span>,
+  <span class="code-property">corePhilosophy</span>: <span class="code-string">"Speed, Modularity & Intelligence"</span>,
+  <span class="code-property">currentObsessions</span>: [
+    <span class="code-string">"Ensemble Deep Learning (CNNs)"</span>,
+    <span class="code-string">"FastAPI Microservices"</span>,
+    <span class="code-string">"Gemini AI LLM Agent Chains"</span>
+  ],
+  <span class="code-property">status</span>: <span class="code-string">"Ready for High-Impact Collaborations"</span>,
+  <span class="code-function">solveProblems</span>: () => {
+    <span class="code-keyword">return</span> <span class="code-string">"Shipping exceptional software 🚀"</span>;
+  }
+};</code></pre>
+            </div>
+            <div class="window-footer">
+              <span class="terminal-status"><span class="status-indicator"></span> TypeScript Engine Active</span>
+              <span class="terminal-loc">UTF-8 • LF • 100% Optimized</span>
+            </div>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="floating-badge badge-fastapi">
+            <span class="badge-icon">⚡</span>
+            <div>
+              <strong>FastAPI</strong>
+              <small>High Throughput</small>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-gemini">
+            <span class="badge-icon">✨</span>
+            <div>
+              <strong>Gemini AI</strong>
+              <small>Predictive Agents</small>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-react">
+            <span class="badge-icon">⚛️</span>
+            <div>
+              <strong>React / Next.js</strong>
+              <small>Pixel-Perfect UX</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Engineering Mindset</span>
+          <h2 class="section-title">Bridging Theory & <span class="gradient-text">Production Scale</span></h2>
+          <p class="section-subtitle">A computer science scholar who loves turning complex mathematical algorithms and modern software design patterns into intuitive, high-performance web products.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card card-glass">
+            <div class="about-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+            </div>
+            <h3>Full-Stack System Architecture</h3>
+            <p>Crafting decoupled web architectures with Next.js on the frontend, FastAPI asynchronous microservices, and Supabase / PostgreSQL relational backends with real-time sync.</p>
+          </div>
+
+          <div class="about-card card-glass">
+            <div class="about-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>Deep Learning & Multimodal AI</h3>
+            <p>Deploying computer vision models using CNN ensembles for biological diagnostics and integrating Gemini AI for real-time natural language query parsing and predictive financial analytics.</p>
+          </div>
+
+          <div class="about-card card-glass">
+            <div class="about-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3>Hackathon-Tested Resilience</h3>
+            <p>Proven track record in high-pressure 36-hour hackathons like Innovate X and the ₹30,00,000 prize-pool Fix-My-Itch hackathon, shipping end-to-end working prototypes under strict deadlines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="section stack-section" id="stack">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Core Capabilities</span>
+          <h2 class="section-title">The <span class="gradient-text">Technology Stack</span></h2>
+          <p class="section-subtitle">Carefully curated tools and battle-tested frameworks powering my development workflows.</p>
+        </div>
+
+        <div class="stack-grid">
+          <!-- React -->
+          <div class="stack-card card-glass">
+            <div class="stack-icon-box react-box">
+              <svg class="tech-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(60 12 12)" />
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(120 12 12)" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="stack-info">
+              <div class="stack-header-row">
+                <h3 class="stack-name">React</h3>
+                <span class="stack-tag">Frontend</span>
+              </div>
+              <p class="stack-desc">Custom hooks, state management, memoization, and responsive component libraries.</p>
+              <div class="stack-meter"><div class="stack-meter-fill" style="width: 95%;"></div></div>
+            </div>
+          </div>
+
+          <!-- Next.js -->
+          <div class="stack-card card-glass">
+            <div class="stack-icon-box nextjs-box">
+              <svg class="tech-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.87 14.86L9.81 8.87v7.99H8.19V7.14h1.68l6.1 8.04V7.14h1.62v9.72h-1.72z" />
+              </svg>
+            </div>
+            <div class="stack-info">
+              <div class="stack-header-row">
+                <h3 class="stack-name">Next.js</h3>
+                <span class="stack-tag">Full-Stack SSR</span>
+              </div>
+              <p class="stack-desc">Server-Side Rendering, App Router, static site generation, and optimized image pipelines.</p>
+              <div class="stack-meter"><div class="stack-meter-fill" style="width: 90%;"></div></div>
+            </div>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="stack-card card-glass">
+            <div class="stack-icon-box tailwind-box">
+              <svg class="tech-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 6c-2.4 0-3.9 1.2-4.5 3.6 1-.8 2.1-1.1 3.3-.9 1 .2 1.8 1 2.6 1.8C14.7 11.8 16.3 13.4 20 13.4c2.4 0 3.9-1.2 4.5-3.6-1 .8-2.1 1.1-3.3.9-1-.2-1.8-1-2.6-1.8C17.3 7.6 15.7 6 12 6zM4 13.4c-2.4 0-3.9 1.2-4.5 3.6 1-.8 2.1-1.1 3.3-.9 1 .2 1.8 1 2.6 1.8C6.7 19.2 8.3 20.8 12 20.8c2.4 0 3.9-1.2 4.5-3.6-1 .8-2.1 1.1-3.3.9-1-.2-1.8-1-2.6-1.8C9.3 15 7.7 13.4 4 13.4z"/>
+              </svg>
+            </div>
+            <div class="stack-info">
+              <div class="stack-header-row">
+                <h3 class="stack-name">Tailwind CSS</h3>
+                <span class="stack-tag">UI Styling</span>
+              </div>
+              <p class="stack-desc">Utility-first rapid prototyping, responsive layouts, micro-interactions, and design tokens.</p>
+              <div class="stack-meter"><div class="stack-meter-fill" style="width: 96%;"></div></div>
+            </div>
+          </div>
+
+          <!-- FastAPI -->
+          <div class="stack-card card-glass">
+            <div class="stack-icon-box fastapi-box">
+              <svg class="tech-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2L2 19.5h8.5L8.5 22 22 4.5h-8.5L12 2z" />
+              </svg>
+            </div>
+            <div class="stack-info">
+              <div class="stack-header-row">
+                <h3 class="stack-name">FastAPI</h3>
+                <span class="stack-tag">Python Backend</span>
+              </div>
+              <p class="stack-desc">High-performance async endpoints, Pydantic data schemas, and auto OpenAPI docs.</p>
+              <div class="stack-meter"><div class="stack-meter-fill" style="width: 92%;"></div></div>
+            </div>
+          </div>
+
+          <!-- Supabase -->
+          <div class="stack-card card-glass">
+            <div class="stack-icon-box supabase-box">
+              <svg class="tech-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M21.362 9.354H12V.5a.5.5 0 0 0-.853-.353l-8.5 8.5a.5.5 0 0 0 .353.853H12v8.854a.5.5 0 0 0 .853.353l8.5-8.5a.5.5 0 0 0-.353-.853z"/>
+              </svg>
+            </div>
+            <div class="stack-info">
+              <div class="stack-header-row">
+                <h3 class="stack-name">Supabase</h3>
+                <span class="stack-tag">DB & Auth</span>
+              </div>
+              <p class="stack-desc">PostgreSQL relational modeling, Row Level Security (RLS), real-time websockets, and storage.</p>
+              <div class="stack-meter"><div class="stack-meter-fill" style="width: 88%;"></div></div>
+            </div>
+          </div>
+
+          <!-- Gemini AI -->
+          <div class="stack-card card-glass">
+            <div class="stack-icon-box gemini-box">
+              <svg class="tech-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" />
+              </svg>
+            </div>
+            <div class="stack-info">
+              <div class="stack-header-row">
+                <h3 class="stack-name">Gemini AI</h3>
+                <span class="stack-tag">Generative AI</span>
+              </div>
+              <p class="stack-desc">Prompt engineering, structured function calling, multimodal inputs, and predictive synthesis.</p>
+              <div class="stack-meter"><div class="stack-meter-fill" style="width: 94%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Showcase Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Engineered Portfolio</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Flagship Projects</span></h2>
+          <p class="section-subtitle">Real-world applications solving complex problems across deep learning, wealth management, smart campus governance, and competitive hackathons.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Dr. Brinjal -->
+          <article class="project-card card-glass">
+            <div class="project-header-bar">
+              <span class="project-badge ai-badge">
+                <span class="badge-dot pulse-emerald"></span> AI & Computer Vision
+              </span>
+              <div class="project-links">
+                <a href="#contact" class="icon-link" aria-label="Dr. Brinjal Repository Info" title="Source & Case Study">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Dr. Brinjal</h3>
+              <p class="project-tagline">AI-Driven Eggplant Leaf Disease Classification System</p>
+              
+              <p class="project-description">
+                A state-of-the-art agricultural diagnostic platform that analyzes eggplant leaf pathologies using custom CNN ensembles and multimodal visual-textual inputs. Enables farmers to identify crop pests and diseases with >96% accuracy and get instant remediation steps.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <strong>Ensemble CNNs:</strong> ResNet50 + EfficientNetV2 fusion for multi-class leaf lesion detection.
+                </div>
+                <div class="highlight-item">
+                  <strong>Edge Deployment:</strong> Quantized model pipeline optimized for mobile web inference under 180ms.
+                </div>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">CNN Ensemble</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Multimodal</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Sanchay -->
+          <article class="project-card card-glass">
+            <div class="project-header-bar">
+              <span class="project-badge fin-badge">
+                <span class="badge-dot pulse-cyan"></span> FinTech & AI Agent
+              </span>
+              <div class="project-links">
+                <a href="#contact" class="icon-link" aria-label="Sanchay Project Live Demo" title="Explore Architecture">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Sanchay</h3>
+              <p class="project-tagline">Intelligent Wealth Forecasting & Financial Oracle</p>
+              
+              <p class="project-description">
+                An advanced wealth trajectory simulation and investment advisory platform. Combines high-speed mathematical back-testing via FastAPI with Gemini AI's contextual reasoning engine to produce personalized portfolio projections and risk mitigation strategies.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <strong>Gemini AI Reasoning:</strong> Evaluates macroeconomic indicators against personal savings targets.
+                </div>
+                <div class="highlight-item">
+                  <strong>Monte Carlo Engine:</strong> Computes 10,000+ stochastic scenarios in sub-second FastAPI routines.
+                </div>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">Gemini AI</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">Tailwind CSS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: SCMS -->
+          <article class="project-card card-glass">
+            <div class="project-header-bar">
+              <span class="project-badge enterprise-badge">
+                <span class="badge-dot pulse-purple"></span> Enterprise Platform
+              </span>
+              <div class="project-links">
+                <a href="#contact" class="icon-link" aria-label="SCMS Case Study" title="Case Study">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">SCMS (Smart Campus Management System)</h3>
+              <p class="project-tagline">Next-Gen Administrative Governance & Predictive Oracle</p>
+              
+              <p class="project-description">
+                A unified campus administration ecosystem equipped with a cryptographic Immutable Audit Ledger for tamper-proof grade/attendance records and an autonomous Predictive Utilization Oracle that optimizes classroom scheduling and energy allocation.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <strong>Immutable Ledger:</strong> Hash-chained audit logs ensuring zero unauthorized grade alterations.
+                </div>
+                <div class="highlight-item">
+                  <strong>Predictive Oracle:</strong> Algorithmic occupancy forecasting saving ~22% on campus utilities.
+                </div>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">PostgreSQL / Supabase</span>
+                <span class="tech-tag">Audit Ledger</span>
+                <span class="tech-tag">Role-Based RLS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Hackathon Wins -->
+          <article class="project-card card-glass hackathon-special-card">
+            <div class="project-header-bar">
+              <span class="project-badge trophy-badge">
+                <span class="badge-dot pulse-gold"></span> Competitive Hackathons
+              </span>
+              <div class="project-links">
+                <span class="prize-tag">₹30,00,000 Pool</span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3 class="project-title">Hackathon Victories & High-Stakes Builds</h3>
+              <p class="project-tagline">Innovate X & Fix-My-Itch National Hackathon</p>
+              
+              <p class="project-description">
+                Pioneered rapid architectural design and full-stack deployment in intense 36-hour competitive hackathons, solving real-world civic and developer-tooling bottlenecks against top engineering talent nationwide.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <strong>Fix-My-Itch Hackathon:</strong> Built an automated code-smell repair bot competing in a prestigious <strong>₹30,00,000 prize pool</strong> tournament.
+                </div>
+                <div class="highlight-item">
+                  <strong>Innovate X:</strong> Awarded top honors for designing an autonomous emergency response dispatcher using geospatial websockets.
+                </div>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">Rapid Prototyping</span>
+                <span class="tech-tag">Innovate X</span>
+                <span class="tech-tag">Fix-My-Itch</span>
+                <span class="tech-tag">WebSockets</span>
+                <span class="tech-tag">Gemini API</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Social Proof</span>
+          <h2 class="section-title">What <span class="gradient-text">Teammates Say</span></h2>
+          <p class="section-subtitle">Collaborators, fellow hackathon teammates, and academic project partners on our joint engineering journeys.</p>
+        </div>
+
+        <div class="testimonials-carousel" id="testimonials-carousel" aria-roledescription="carousel" aria-label="Teammate Testimonials">
+          <div class="carousel-track-wrapper">
+            <div class="carousel-track" id="carousel-track">
+              
+              <!-- Quote 1 -->
+              <div class="testimonial-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4">
+                <div class="testimonial-card card-glass">
+                  <div class="quote-mark">“</div>
+                  <p class="quote-text">
+                    Srijit's ability to seamlessly bridge deep learning models with fast web endpoints in the <strong>Dr. Brinjal</strong> project blew all of us away. He wrote the entire CNN ensemble pipeline and had it serving predictions under 200ms without breaking a sweat.
+                  </p>
+                  <div class="author-info">
+                    <div class="author-avatar" aria-hidden="true">AR</div>
+                    <div class="author-details">
+                      <strong class="author-name">Aniket Roy</strong>
+                      <span class="author-role">AI Research & Team Partner • Adamas University</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quote 2 -->
+              <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+                <div class="testimonial-card card-glass">
+                  <div class="quote-mark">“</div>
+                  <p class="quote-text">
+                    During the <strong>Fix-My-Itch hackathon</strong> (₹30L prize pool), Srijit took charge of the entire backend and Gemini integration under insane pressure. His architectural composure and clean coding standards were the reason our prototype demoed flawlessly.
+                  </p>
+                  <div class="author-info">
+                    <div class="author-avatar" aria-hidden="true">SD</div>
+                    <div class="author-details">
+                      <strong class="author-name">Sneha Dutta</strong>
+                      <span class="author-role">Frontend Lead & Hackathon Collaborator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quote 3 -->
+              <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+                <div class="testimonial-card card-glass">
+                  <div class="quote-mark">“</div>
+                  <p class="quote-text">
+                    Building the <strong>SCMS</strong> campus portal with Srijit was an eye-opener. The Immutable Audit Ledger and predictive algorithms he designed gave our department heads absolute confidence in student record integrity and room schedules.
+                  </p>
+                  <div class="author-info">
+                    <div class="author-avatar" aria-hidden="true">RD</div>
+                    <div class="author-details">
+                      <strong class="author-name">Rohan Das</strong>
+                      <span class="author-role">Full-Stack Peer • SCMS Core Team</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quote 4 -->
+              <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+                <div class="testimonial-card card-glass">
+                  <div class="quote-mark">“</div>
+                  <p class="quote-text">
+                    Srijit's implementation of <strong>Sanchay</strong> showed me how powerful combining FastAPI with Gemini AI could truly be. He is extraordinarily detail-oriented, passionate about 100/100 Lighthouse performance, and an absolute joy to build with.
+                  </p>
+                  <div class="author-info">
+                    <div class="author-avatar" aria-hidden="true">PM</div>
+                    <div class="author-details">
+                      <strong class="author-name">Priyanka Mukherjee</strong>
+                      <span class="author-role">FinTech Project Co-developer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-nav">
+            <button class="carousel-arrow prev-btn" id="carousel-prev" aria-label="Previous testimonial">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Testimonial pagination">
+              <button class="dot-btn active" role="tab" aria-selected="true" aria-label="Slide 1" data-index="0"></button>
+              <button class="dot-btn" role="tab" aria-selected="false" aria-label="Slide 2" data-index="1"></button>
+              <button class="dot-btn" role="tab" aria-selected="false" aria-label="Slide 3" data-index="2"></button>
+              <button class="dot-btn" role="tab" aria-selected="false" aria-label="Slide 4" data-index="3"></button>
+            </div>
+            <button class="carousel-arrow next-btn" id="carousel-next" aria-label="Next testimonial">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Let's Connect</span>
+          <h2 class="section-title">Start a <span class="gradient-text">Conversation</span></h2>
+          <p class="section-subtitle">Whether you have an ambitious internship project, a hackathon invitation, or want to discuss full-stack & AI architecture, my inbox is always open.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Cards -->
+          <div class="contact-info-col">
+            <div class="contact-card card-glass">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Email Me</span>
+                <a href="mailto:srijit.paul.dev@gmail.com" class="contact-link">srijit.paul.dev@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-card card-glass">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-link">linkedin.com/in/srijit-paul</a>
+              </div>
+            </div>
+
+            <div class="contact-card card-glass">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">GitHub</span>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/srijit-paul</a>
+              </div>
+            </div>
+
+            <div class="contact-card card-glass">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Location</span>
+                <span class="contact-link">Adamas University, Kolkata, India</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form with Vanilla JS Validation -->
+          <div class="contact-form-col">
+            <div class="card-glass form-card">
+              <h3 class="form-title">Send a Direct Message</h3>
+              <p class="form-subtitle">Fill out the details below and I'll respond within 24 hours.</p>
+
+              <form id="contact-form" class="contact-form" novalidate>
+                <!-- Name Field -->
+                <div class="form-group">
+                  <label for="name" class="form-label">Full Name <span class="required-star">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Henderson" autocomplete="name" required>
+                    <span class="input-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </span>
+                  </div>
+                  <span class="error-msg" id="name-error" aria-live="polite"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address <span class="required-star">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@example.com" autocomplete="email" required>
+                    <span class="input-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </span>
+                  </div>
+                  <span class="error-msg" id="email-error" aria-live="polite"></span>
+                </div>
+
+                <!-- Subject Field -->
+                <div class="form-group">
+                  <label for="subject" class="form-label">Subject <span class="required-star">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Hackathon Team / Full-Stack Project" required>
+                    <span class="input-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+                    </span>
+                  </div>
+                  <span class="error-msg" id="subject-error" aria-live="polite"></span>
+                </div>
+
+                <!-- Message Field -->
+                <div class="form-group">
+                  <label for="message" class="form-label">Message <span class="required-star">*</span></label>
+                  <div class="input-wrapper">
+                    <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Share project details, requirements, or say hello..." required></textarea>
+                  </div>
+                  <span class="error-msg" id="message-error" aria-live="polite"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-lg btn-primary submit-btn" id="submit-btn">
+                  <span class="btn-text">Transmit Message</span>
+                  <span class="btn-spinner" aria-hidden="true"></span>
+                  <svg class="btn-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+
+                <!-- Status Feedback Toast / Banner -->
+                <div class="form-alert" id="form-alert" role="alert" aria-hidden="true"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <span class="logo-badge">SP</span>
+            <span class="logo-text">Srijit<span class="gradient-text">.dev</span></span>
+          </a>
+          <p class="footer-tagline">Crafting resilient, intelligent full-stack software & deep learning applications.</p>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#stack">Tech Stack</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Featured Works</h4>
+          <ul>
+            <li><a href="#projects">Dr. Brinjal (AI Diagnosis)</a></li>
+            <li><a href="#projects">Sanchay (Wealth Forecaster)</a></li>
+            <li><a href="#projects">SCMS (Smart Campus)</a></li>
+            <li><a href="#projects">Innovate X & Fix-My-Itch</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:srijit.paul.dev@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="current-year">2026</span> Srijit Paul. Handcrafted with semantic HTML5, modern CSS3, and vanilla JS.</p>
+        <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+          <span>Back to Top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+</body>
+</html>

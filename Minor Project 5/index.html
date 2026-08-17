@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ES6 JavaScript Utility Library | Test Runner & Playground</title>
+  <meta name="description" content="Reusable ES6 JavaScript utility package for Arrays, Strings, Dates, and Currencies with defensive edge-case handling and JSDoc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       EMERALD AURORA THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-main: #041316;
+      --bg-mesh-1: rgba(16, 185, 129, 0.18);
+      --bg-mesh-2: rgba(6, 182, 212, 0.15);
+      --bg-mesh-3: rgba(52, 211, 153, 0.08);
+      --bg-card: rgba(8, 28, 33, 0.82);
+      --bg-card-hover: rgba(13, 39, 46, 0.9);
+      --bg-terminal: #020b0d;
+      --border-color: rgba(20, 184, 166, 0.18);
+      --border-accent: rgba(52, 211, 153, 0.45);
+      --primary: #10b981;
+      --primary-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+      --primary-light: #6ee7b7;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-rose: #f43f5e;
+      --text-primary: #ecfdf5;
+      --text-secondary: #99f6e4;
+      --text-muted: #5eead4;
+      --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --card-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(16, 185, 129, 0.12);
+      --glow-color: rgba(16, 185, 129, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(at 0% 0%, var(--bg-mesh-1) 0px, transparent 55%),
+        radial-gradient(at 100% 100%, var(--bg-mesh-2) 0px, transparent 55%),
+        radial-gradient(at 50% 30%, var(--bg-mesh-3) 0px, transparent 65%);
+      background-attachment: fixed;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding: 2.75rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--glow-color);
+      color: var(--primary-light);
+      border: 1px solid var(--border-accent);
+      padding: 0.4rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.85rem;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 1.75rem;
+      font-weight: 400;
+    }
+
+    .instruction-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      padding: 0.65rem 1.4rem;
+      border-radius: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--primary-light);
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 980px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.75rem;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+    }
+
+    /* Live Console Terminal */
+    .console-box {
+      background: var(--bg-terminal);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.15rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      height: 540px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: inset 0 3px 12px rgba(0, 0, 0, 0.7);
+    }
+
+    .console-entry {
+      padding: 4px 8px;
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+      line-height: 1.45;
+    }
+
+    .console-entry.log {
+      border-color: var(--primary);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .console-entry.group {
+      color: #38bdf8;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.12);
+      margin-top: 4px;
+    }
+
+    .console-entry.warn {
+      color: #fbbf24;
+      border-color: #fbbf24;
+      background: rgba(245, 158, 11, 0.12);
+    }
+
+    .console-entry.error {
+      color: #f87171;
+      border-color: #f87171;
+      background: rgba(244, 63, 94, 0.16);
+    }
+
+    .console-entry.success {
+      color: #34d399;
+      border-color: #34d399;
+      background: rgba(16, 185, 129, 0.18);
+      font-weight: 600;
+    }
+
+    /* Interactive Playground */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px;
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.6rem 0.5rem;
+      border-radius: 9px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .tab-btn.active {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      box-shadow: 0 4px 14px var(--glow-color);
+    }
+
+    .tab-content {
+      display: none;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .input-control {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .input-control:focus {
+      border-color: var(--border-accent);
+      box-shadow: 0 0 0 3px var(--glow-color);
+    }
+
+    .btn {
+      background: var(--primary-gradient);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.3rem;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px var(--glow-color);
+    }
+
+    .btn:hover {
+      filter: brightness(1.12);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--glow-color);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .result-box {
+      background: var(--bg-terminal);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--accent-emerald);
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      word-break: break-all;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Modules Quick Reference Cards */
+    .module-specs {
+      grid-column: 1 / -1;
+      margin-top: 1.5rem;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .spec-card {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .spec-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px var(--glow-color);
+    }
+
+    .spec-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spec-card ul {
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .spec-card code {
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.08);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">✦ Enterprise JavaScript Core ✦</div>
+      <h1>Universal ES6 Utility Suite</h1>
+      <p class="subtitle">
+        Architectural helper package for Arrays, Strings, Dates, and Currencies featuring defensive validation, runtime safety checks, and strict JSDoc.
+      </p>
+      <div class="instruction-bar">
+        <span>💡 Press <strong>F12</strong> for DevTools Console or test live interactively below.</span>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- Live Console Log Viewer -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>📟</span> Live Console Stream
+          </div>
+          <span style="font-size: 0.82rem; color: var(--accent-emerald); font-family: var(--font-mono); font-weight: 600;">
+            ● app.js Executing
+          </span>
+        </div>
+        <div id="terminal-output" class="console-box">
+          <div class="console-entry log">⏳ Initializing ES6 modules and capturing output...</div>
+        </div>
+      </section>
+
+      <!-- Live Interactive Playground -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🧪</span> Interactive Playground
+          </div>
+          <span style="font-size: 0.82rem; color: var(--text-secondary);">
+            Live Function Tester
+          </span>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('array-tab', this)">Arrays</button>
+          <button class="tab-btn" onclick="switchTab('string-tab', this)">Strings</button>
+          <button class="tab-btn" onclick="switchTab('date-tab', this)">Dates</button>
+          <button class="tab-btn" onclick="switchTab('currency-tab', this)">Currency</button>
+        </div>
+
+        <!-- Arrays Tab -->
+        <div id="array-tab" class="tab-content active">
+          <div class="input-group">
+            <label>Array Elements (JSON or Comma separated):</label>
+            <input id="array-input" class="input-control" value="['a', 'b', 'c', 'd', 'e', 'f', 'g']" />
+          </div>
+          <div class="input-group">
+            <label>Chunk Size:</label>
+            <input id="chunk-size" type="number" class="input-control" value="3" min="1" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="btn" onclick="testChunk()">Run chunk()</button>
+            <button class="btn" style="background: rgba(255,255,255,0.08); box-shadow: none;" onclick="testUnique()">Run unique()</button>
+          </div>
+          <div class="input-group">
+            <label>Result:</label>
+            <div id="array-result" class="result-box">Click a button to evaluate</div>
+          </div>
+        </div>
+
+        <!-- Strings Tab -->
+        <div id="string-tab" class="tab-content">
+          <div class="input-group">
+            <label>Raw String:</label>
+            <input id="string-input" class="input-control" value="hello-world_of-javascript-in-2026" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="btn" onclick="testTitleCase()">toTitleCase()</button>
+            <button class="btn" onclick="testSlugify()">slugify()</button>
+            <button class="btn" onclick="testTruncate()">truncate(18)</button>
+            <button class="btn" onclick="testMask()">maskString(4, 4)</button>
+          </div>
+          <div class="input-group">
+            <label>Result:</label>
+            <div id="string-result" class="result-box">Click a button to evaluate</div>
+          </div>
+        </div>
+
+        <!-- Dates Tab -->
+        <div id="date-tab" class="tab-content">
+          <div class="input-group">
+            <label>Start Date:</label>
+            <input id="date-start" type="date" class="input-control" value="2026-08-10" />
+          </div>
+          <div class="input-group">
+            <label>End Date:</label>
+            <input id="date-end" type="date" class="input-control" value="2026-08-17" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="btn" onclick="testDaysBetween()">daysBetween()</button>
+            <button class="btn" onclick="testIsWeekend()">isWeekend(End)</button>
+            <button class="btn" onclick="testFormatDate()">formatDate('long')</button>
+            <button class="btn" onclick="testRelativeTime()">getRelativeTime()</button>
+          </div>
+          <div class="input-group">
+            <label>Result:</label>
+            <div id="date-result" class="result-box">Click a button to evaluate</div>
+          </div>
+        </div>
+
+        <!-- Currency Tab -->
+        <div id="currency-tab" class="tab-content">
+          <div class="input-group">
+            <label>Amount:</label>
+            <input id="num-amount" type="number" class="input-control" value="1250000.50" step="any" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="btn" onclick="testINR()">Format INR (₹)</button>
+            <button class="btn" onclick="testUSD()">Format USD ($)</button>
+            <button class="btn" onclick="testEUR()">Format EUR (€)</button>
+            <button class="btn" onclick="testCompact()">Compact (Cr/M)</button>
+          </div>
+          <div class="input-group">
+            <label>Result:</label>
+            <div id="currency-result" class="result-box">Click a button to evaluate</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Module Specifications -->
+      <section class="card module-specs">
+        <div class="card-header">
+          <div class="card-title">
+            <span>📚</span> Exported Utilities Architecture
+          </div>
+          <span style="font-size: 0.82rem; color: var(--primary-light); font-family: var(--font-mono);">
+            utils/helpers.js
+          </span>
+        </div>
+        <div class="spec-grid">
+          <div class="spec-card">
+            <h3>📦 Array Helpers</h3>
+            <ul>
+              <li><code>chunk(array, size)</code></li>
+              <li><code>unique(array, keyOrFn)</code></li>
+              <li><code>shuffle(array)</code></li>
+              <li><code>groupBy(array, keyOrFn)</code></li>
+              <li><code>flatten(array, depth)</code></li>
+            </ul>
+          </div>
+
+          <div class="spec-card">
+            <h3>🔤 String Helpers</h3>
+            <ul>
+              <li><code>toTitleCase(str)</code></li>
+              <li><code>truncate(str, len, suffix)</code></li>
+              <li><code>slugify(str)</code></li>
+              <li><code>capitalize(str)</code></li>
+              <li><code>maskString(str, start, end, char)</code></li>
+            </ul>
+          </div>
+
+          <div class="spec-card">
+            <h3>📅 Date Helpers</h3>
+            <ul>
+              <li><code>formatDate(date, pattern, locale)</code></li>
+              <li><code>daysBetween(d1, d2, abs)</code></li>
+              <li><code>isWeekend(date)</code></li>
+              <li><code>getRelativeTime(date, base, loc)</code></li>
+              <li><code>isValidDate(value)</code></li>
+            </ul>
+          </div>
+
+          <div class="spec-card">
+            <h3>💰 Currency & Number</h3>
+            <ul>
+              <li><code>formatCurrency(amt, code, loc)</code></li>
+              <li><code>formatCompactNumber(num, loc)</code></li>
+              <li><code>clamp(val, min, max)</code></li>
+              <li><code>toPercentage(val, decimals)</code></li>
+              <li><code>roundTo(num, decimals)</code></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      Senior JavaScript Architect • Modular Utility Library • ES6 Modules & JSDoc Standard
+    </footer>
+  </div>
+
+  <!-- Console Log Interceptor for UI Display -->
+  <script>
+    (function () {
+      const terminal = document.getElementById('terminal-output');
+      const originalLog = console.log;
+      const originalWarn = console.warn;
+      const originalError = console.error;
+      const originalGroup = console.group;
+      const originalGroupEnd = console.groupEnd;
+
+      let groupIndent = 0;
+
+      function sanitizeText(arg) {
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg, null, 2);
+          } catch (e) {
+            return String(arg);
+          }
+        }
+        return String(arg);
+      }
+
+      function appendToTerminal(type, args) {
+        if (!terminal) return;
+        const msg = args.map(sanitizeText).join(' ');
+        
+        // Skip CSS styling directives like %c
+        const cleanedMsg = msg.replace(/%c/g, '');
+
+        const entry = document.createElement('div');
+        entry.className = `console-entry ${type}`;
+        entry.style.paddingLeft = `${groupIndent * 14 + 6}px`;
+        entry.textContent = cleanedMsg;
+
+        if (cleanedMsg.includes('✅')) entry.className = 'console-entry success';
+
+        terminal.appendChild(entry);
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+
+      console.log = function (...args) {
+        originalLog.apply(console, args);
+        appendToTerminal('log', args);
+      };
+
+      console.warn = function (...args) {
+        originalWarn.apply(console, args);
+        appendToTerminal('warn', args);
+      };
+
+      console.error = function (...args) {
+        originalError.apply(console, args);
+        appendToTerminal('error', args);
+      };
+
+      console.group = function (...args) {
+        originalGroup.apply(console, args);
+        appendToTerminal('group', args);
+        groupIndent++;
+      };
+
+      console.groupEnd = function () {
+        originalGroupEnd.apply(console);
+        if (groupIndent > 0) groupIndent--;
+      };
+    })();
+
+    // Tab Switcher
+    window.switchTab = function(tabId, el) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    };
+  </script>
+
+  <!-- Interactive Playground Scripts (Module imports) -->
+  <script type="module">
+    import * as Utils from './utils/helpers.js';
+
+    // Expose functions for Playground interactive buttons
+    window.testChunk = () => {
+      try {
+        let raw = document.getElementById('array-input').value;
+        let arr = eval(`(${raw})`);
+        let size = Number(document.getElementById('chunk-size').value);
+        let res = Utils.chunk(arr, size);
+        document.getElementById('array-result').textContent = JSON.stringify(res);
+      } catch (err) {
+        document.getElementById('array-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testUnique = () => {
+      try {
+        let raw = document.getElementById('array-input').value;
+        let arr = eval(`(${raw})`);
+        let res = Utils.unique(arr);
+        document.getElementById('array-result').textContent = JSON.stringify(res);
+      } catch (err) {
+        document.getElementById('array-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testTitleCase = () => {
+      try {
+        let val = document.getElementById('string-input').value;
+        document.getElementById('string-result').textContent = Utils.toTitleCase(val);
+      } catch (err) {
+        document.getElementById('string-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testSlugify = () => {
+      try {
+        let val = document.getElementById('string-input').value;
+        document.getElementById('string-result').textContent = Utils.slugify(val);
+      } catch (err) {
+        document.getElementById('string-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testTruncate = () => {
+      try {
+        let val = document.getElementById('string-input').value;
+        document.getElementById('string-result').textContent = Utils.truncate(val, 18);
+      } catch (err) {
+        document.getElementById('string-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testMask = () => {
+      try {
+        let val = document.getElementById('string-input').value;
+        document.getElementById('string-result').textContent = Utils.maskString(val, 4, 4, '*');
+      } catch (err) {
+        document.getElementById('string-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testDaysBetween = () => {
+      try {
+        let d1 = document.getElementById('date-start').value;
+        let d2 = document.getElementById('date-end').value;
+        let diff = Utils.daysBetween(d1, d2);
+        document.getElementById('date-result').textContent = `${diff} day(s) difference`;
+      } catch (err) {
+        document.getElementById('date-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testIsWeekend = () => {
+      try {
+        let d2 = document.getElementById('date-end').value;
+        let isW = Utils.isWeekend(d2);
+        document.getElementById('date-result').textContent = `Is ${d2} a Weekend? -> ${isW ? 'YES' : 'NO'}`;
+      } catch (err) {
+        document.getElementById('date-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testFormatDate = () => {
+      try {
+        let d2 = document.getElementById('date-end').value;
+        let formatted = Utils.formatDate(d2, 'dddd, MMMM D, YYYY');
+        document.getElementById('date-result').textContent = formatted;
+      } catch (err) {
+        document.getElementById('date-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testRelativeTime = () => {
+      try {
+        let d1 = document.getElementById('date-start').value;
+        let rel = Utils.getRelativeTime(d1);
+        document.getElementById('date-result').textContent = `Relative time: ${rel}`;
+      } catch (err) {
+        document.getElementById('date-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testINR = () => {
+      try {
+        let amt = Number(document.getElementById('num-amount').value);
+        document.getElementById('currency-result').textContent = Utils.formatCurrency(amt, 'INR', 'en-IN');
+      } catch (err) {
+        document.getElementById('currency-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testUSD = () => {
+      try {
+        let amt = Number(document.getElementById('num-amount').value);
+        document.getElementById('currency-result').textContent = Utils.formatCurrency(amt, 'USD', 'en-US');
+      } catch (err) {
+        document.getElementById('currency-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testEUR = () => {
+      try {
+        let amt = Number(document.getElementById('num-amount').value);
+        document.getElementById('currency-result').textContent = Utils.formatCurrency(amt, 'EUR', 'de-DE');
+      } catch (err) {
+        document.getElementById('currency-result').textContent = `❌ ${err.message}`;
+      }
+    };
+
+    window.testCompact = () => {
+      try {
+        let amt = Number(document.getElementById('num-amount').value);
+        document.getElementById('currency-result').textContent = `${Utils.formatCompactNumber(amt, 'en-US')} (US) | ${Utils.formatCompactNumber(amt, 'en-IN')} (IN)`;
+      } catch (err) {
+        document.getElementById('currency-result').textContent = `❌ ${err.message}`;
+      }
+    };
+  </script>
+
+  <!-- Required Module Loading for app.js -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

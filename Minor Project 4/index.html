@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A modern, high-performance vanilla JavaScript Habit Tracker Progressive Web App to track daily habits, maintain streaks, and visualize progress." />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>HabitPulse — Progressive Habit Tracker</title>
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background Glow Accents -->
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Main Application Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="logo-badge">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="app-title">HabitPulse</h1>
+          <p class="current-date" id="current-date-display">Loading date...</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle-btn" class="btn btn-icon" title="Toggle Light / Dark Mode" aria-label="Toggle Theme">
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Add Habit Trigger Button -->
+        <button id="open-add-modal-btn" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>New Habit</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Analytics & Daily Progress Section -->
+    <section class="dashboard-hero" aria-label="Progress Overview">
+      <!-- Main Progress Ring Card -->
+      <div class="glass-card hero-progress-card">
+        <div class="progress-radial-container">
+          <svg class="progress-ring-svg" viewBox="0 0 120 120">
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="progress-ring-fill" id="daily-progress-circle" cx="60" cy="60" r="50"></circle>
+          </svg>
+          <div class="progress-ring-content">
+            <span class="progress-percentage" id="progress-percentage-text">0%</span>
+            <span class="progress-subtext">Completed</span>
+          </div>
+        </div>
+
+        <div class="hero-progress-info">
+          <div class="hero-greeting">
+            <h2 id="greeting-heading">Keep the momentum going!</h2>
+            <p id="progress-status-text">You have completed 0 of 0 habits today.</p>
+          </div>
+          <div class="daily-progress-bar-wrapper">
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="daily-progress-bar" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Grid -->
+      <div class="stats-grid">
+        <div class="glass-card stat-card">
+          <div class="stat-icon-wrapper stat-fire">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Longest Streak</span>
+            <strong class="stat-value" id="longest-streak-stat">0 days</strong>
+          </div>
+        </div>
+
+        <div class="glass-card stat-card">
+          <div class="stat-icon-wrapper stat-target">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Active Habits</span>
+            <strong class="stat-value" id="active-habits-stat">0</strong>
+          </div>
+        </div>
+
+        <div class="glass-card stat-card">
+          <div class="stat-icon-wrapper stat-trophy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.45 1-1 1H8v4h8v-4h-1c-.55 0-1-.45-1-1v-2.34"></path>
+              <path d="M18 4H6v7a6 6 0 0 0 12 0V4z"></path>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Total Check-ins</span>
+            <strong class="stat-value" id="total-completions-stat">0</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters, Search & Sorting Controls -->
+    <section class="controls-section" aria-label="Habit Controls">
+      <!-- Search and Status Bar -->
+      <div class="search-sort-bar">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Search habits..." aria-label="Search habits" />
+          <button id="clear-search-btn" class="clear-search-btn hidden" aria-label="Clear search">✕</button>
+        </div>
+
+        <!-- Status Filter Tabs -->
+        <div class="status-filters" role="tablist" aria-label="Filter habits by completion status">
+          <button class="status-tab active" data-status="all" role="tab" aria-selected="true">All</button>
+          <button class="status-tab" data-status="pending" role="tab" aria-selected="false">Pending</button>
+          <button class="status-tab" data-status="completed" role="tab" aria-selected="false">Completed</button>
+        </div>
+
+        <!-- Sort Select Dropdown -->
+        <div class="sort-wrapper">
+          <label for="sort-select" class="sr-only">Sort habits</label>
+          <select id="sort-select" class="sort-select">
+            <option value="created-desc">Newest First</option>
+            <option value="streak-desc">Highest Streak 🔥</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="progress-desc">Today's Progress</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-filters-container">
+        <span class="category-filter-label">Categories:</span>
+        <div class="category-pills-list" id="category-pills-list">
+          <button class="category-pill active" data-category="all">
+            <span class="pill-dot" style="background-color: var(--primary);"></span>
+            All
+          </button>
+          <button class="category-pill" data-category="Health">
+            <span class="pill-dot" style="background-color: #10b981;"></span>
+            Health
+          </button>
+          <button class="category-pill" data-category="Work">
+            <span class="pill-dot" style="background-color: #3b82f6;"></span>
+            Work
+          </button>
+          <button class="category-pill" data-category="Personal">
+            <span class="pill-dot" style="background-color: #ec4899;"></span>
+            Personal
+          </button>
+          <button class="category-pill" data-category="Mindfulness">
+            <span class="pill-dot" style="background-color: #8b5cf6;"></span>
+            Mindfulness
+          </button>
+          <button class="category-pill" data-category="Fitness">
+            <span class="pill-dot" style="background-color: #f59e0b;"></span>
+            Fitness
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Habit Cards Main Container -->
+    <main class="habits-section" aria-label="Habits List">
+      <div class="habits-header">
+        <h3 class="section-title">
+          My Habits
+          <span class="habit-count-badge" id="visible-habit-count">0</span>
+        </h3>
+        <span class="week-indicator-caption">Past 7 Days History</span>
+      </div>
+
+      <!-- Dynamic Habit List Grid -->
+      <div class="habits-grid" id="habits-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="empty-state">
+        <div class="empty-state-illustration">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="12" y1="18" x2="12" y2="12"></line>
+            <line x1="9" y1="15" x2="15" y2="15"></line>
+          </svg>
+        </div>
+        <h3 class="empty-state-title" id="empty-state-title">No habits found</h3>
+        <p class="empty-state-desc" id="empty-state-desc">Create a new habit or adjust your search and category filters.</p>
+        <button id="empty-create-btn" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Create Habit</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>HabitPulse &bull; Built with Vanilla JavaScript, HTML5 &amp; CSS3 &bull; Data stored locally</p>
+    </footer>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Add / Edit Habit Modal Dialog -->
+  <div class="modal-overlay hidden" id="habit-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="glass-card modal-container">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge" id="modal-icon-badge">⚡</div>
+          <div>
+            <h2 class="modal-title" id="modal-title">Add New Habit</h2>
+            <p class="modal-subtitle">Set goals, define frequency, and build streaks.</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-habit-modal-btn" aria-label="Close dialog">✕</button>
+      </div>
+
+      <!-- Validated Habit Form -->
+      <form id="habit-form" class="habit-form" novalidate>
+        <input type="hidden" id="habit-id" name="habitId" value="" />
+
+        <!-- Habit Name Field -->
+        <div class="form-group" id="group-title">
+          <label for="habit-title" class="form-label">
+            Habit Name <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon">
+            <input
+              type="text"
+              id="habit-title"
+              name="title"
+              class="form-input"
+              placeholder="e.g. Read 20 pages, Morning Jog, Meditate"
+              maxlength="60"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <p class="form-error-msg" id="error-title" role="alert"></p>
+        </div>
+
+        <!-- Category & Frequency Row -->
+        <div class="form-row">
+          <!-- Category Select -->
+          <div class="form-group" id="group-category">
+            <label for="habit-category" class="form-label">
+              Category <span class="required-star">*</span>
+            </label>
+            <select id="habit-category" name="category" class="form-select" required>
+              <option value="" disabled selected>Select category...</option>
+              <option value="Health">🌿 Health</option>
+              <option value="Work">💼 Work</option>
+              <option value="Personal">🎯 Personal</option>
+              <option value="Mindfulness">🧘 Mindfulness</option>
+              <option value="Fitness">⚡ Fitness</option>
+            </select>
+            <p class="form-error-msg" id="error-category" role="alert"></p>
+          </div>
+
+          <!-- Target Goal / Frequency -->
+          <div class="form-group" id="group-frequency">
+            <label for="habit-frequency" class="form-label">
+              Target Frequency
+            </label>
+            <select id="habit-frequency" name="frequency" class="form-select">
+              <option value="daily">Everyday (Daily)</option>
+              <option value="5-days">5 days / week</option>
+              <option value="3-days">3 days / week</option>
+              <option value="weekdays">Weekdays only</option>
+              <option value="weekends">Weekends only</option>
+            </select>
+            <p class="form-error-msg" id="error-frequency" role="alert"></p>
+          </div>
+        </div>
+
+        <!-- Emoji Icon Picker -->
+        <div class="form-group">
+          <label class="form-label">Habit Icon</label>
+          <div class="emoji-picker-grid" id="emoji-picker-container">
+            <button type="button" class="emoji-opt-btn selected" data-emoji="⚡">⚡</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="🏃">🏃</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="💧">💧</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="📚">📚</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="🧘">🧘</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="💻">💻</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="🥗">🥗</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="💤">💤</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="🎨">🎨</button>
+            <button type="button" class="emoji-opt-btn" data-emoji="🌱">🌱</button>
+          </div>
+          <input type="hidden" id="habit-emoji" name="emoji" value="⚡" />
+        </div>
+
+        <!-- Accent Color Theme Picker -->
+        <div class="form-group">
+          <label class="form-label">Accent Color Theme</label>
+          <div class="color-picker-group" id="color-picker-container">
+            <button type="button" class="color-opt-btn selected" data-color="#6366f1" style="background-color: #6366f1;" aria-label="Indigo"></button>
+            <button type="button" class="color-opt-btn" data-color="#10b981" style="background-color: #10b981;" aria-label="Emerald"></button>
+            <button type="button" class="color-opt-btn" data-color="#3b82f6" style="background-color: #3b82f6;" aria-label="Sky Blue"></button>
+            <button type="button" class="color-opt-btn" data-color="#ec4899" style="background-color: #ec4899;" aria-label="Pink"></button>
+            <button type="button" class="color-opt-btn" data-color="#8b5cf6" style="background-color: #8b5cf6;" aria-label="Purple"></button>
+            <button type="button" class="color-opt-btn" data-color="#f59e0b" style="background-color: #f59e0b;" aria-label="Amber"></button>
+            <button type="button" class="color-opt-btn" data-color="#06b6d4" style="background-color: #06b6d4;" aria-label="Cyan"></button>
+          </div>
+          <input type="hidden" id="habit-color" name="color" value="#6366f1" />
+        </div>
+
+        <!-- Motivation / Notes Field -->
+        <div class="form-group">
+          <label for="habit-notes" class="form-label">
+            Notes / Motivation <span class="optional-tag">(Optional)</span>
+          </label>
+          <textarea
+            id="habit-notes"
+            name="notes"
+            class="form-textarea"
+            placeholder="Why is this habit important to you?"
+            maxlength="200"
+            rows="2"
+          ></textarea>
+        </div>
+
+        <!-- Modal Action Buttons -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-habit-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="save-habit-btn">Save Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Habit Details & Heatmap Modal -->
+  <div class="modal-overlay hidden" id="details-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="details-title">
+    <div class="glass-card modal-container details-container">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-icon-badge" id="details-emoji">⚡</span>
+          <div>
+            <h2 class="modal-title" id="details-title">Habit Details</h2>
+            <p class="modal-subtitle" id="details-category-meta">Category &bull; Created date</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-details-modal-btn" aria-label="Close dialog">✕</button>
+      </div>
+
+      <div class="details-body">
+        <!-- Metric Cards -->
+        <div class="details-stats-grid">
+          <div class="mini-stat-card">
+            <span class="mini-stat-label">Current Streak</span>
+            <strong class="mini-stat-val" id="details-current-streak">0 🔥</strong>
+          </div>
+          <div class="mini-stat-card">
+            <span class="mini-stat-label">Best Streak</span>
+            <strong class="mini-stat-val" id="details-best-streak">0 🏆</strong>
+          </div>
+          <div class="mini-stat-card">
+            <span class="mini-stat-label">Total Completed</span>
+            <strong class="mini-stat-val" id="details-total-days">0 days</strong>
+          </div>
+          <div class="mini-stat-card">
+            <span class="mini-stat-label">30-Day Rate</span>
+            <strong class="mini-stat-val" id="details-month-rate">0%</strong>
+          </div>
+        </div>
+
+        <!-- 30-Day Activity Heatmap Grid -->
+        <div class="heatmap-section">
+          <h4 class="heatmap-title">Last 30 Days Activity</h4>
+          <div class="heatmap-grid" id="details-heatmap-grid">
+            <!-- Populated via JavaScript -->
+          </div>
+          <div class="heatmap-legend">
+            <span>Less</span>
+            <div class="legend-box" style="background-color: var(--card-bg-subtle);"></div>
+            <div class="legend-box active" id="legend-active-box" style="background-color: var(--primary);"></div>
+            <span>Done</span>
+          </div>
+        </div>
+
+        <!-- Motivation Note Box -->
+        <div class="details-notes-box hidden" id="details-notes-box">
+          <span class="details-notes-label">Motivation Note:</span>
+          <p id="details-notes-text"></p>
+        </div>
+      </div>
+
+      <div class="modal-footer details-footer">
+        <button type="button" class="btn btn-danger" id="details-delete-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          Delete Habit
+        </button>
+        <button type="button" class="btn btn-secondary" id="details-edit-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
